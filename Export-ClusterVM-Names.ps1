@@ -1,9 +1,10 @@
-﻿# Skript zum Ausgeben der vorhandenen Cluster VMs
+﻿# Skript zum Ausgeben der vorhandenen Cluster VMs in eine CSV
 # Stannek GmbH - v.1.1 - 12.05.2022 - E.Sauerbier
 
 # Parameter
 $FileOutputName = "Name Cluster-VMs.csv"
 
+# Skriptpfad auslesen
 $PSScriptRoot = Split-Path -Parent -Path $MyInvocation.MyCommand.Definition
 $FileOutput = $PSScriptRoot + "\" + $FileOutputName
 

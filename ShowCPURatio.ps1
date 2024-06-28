@@ -1,11 +1,11 @@
 # Dieses Skript liest den CPU Ueberbuchungsfaktors am Hyper-V Host aus
-# Stannek GmbH - E.Sauerbier - v.1.0 - 30.05.2022
+# Stannek GmbH - E.Sauerbier - v.1.1 - 28.06.2024
 
 ## Funktionen laden
 
 # Funktion zum auslesen der Hyper-V Host Infos. Written by Haiko Hertes | www.hertes.net
 function Get-HyperVHostInfo()
-{   $vCores = ((Get-VM -ComputerName $env:COMPUTERNAME).ProcessorCount | Measure-Object -Sum).Sum
+{   $vCores = ((Get-VM -ComputerName $env:COMPUTERNAME | Where-Object State -ne Off).ProcessorCount | Measure-Object -Sum).Sum
 
     $Property = "numberOfCores", "NumberOfLogicalProcessors"
     $CPUs = Get-Ciminstance -class Win32_Processor -Property  $Property -ComputerName $env:COMPUTERNAME| Select-Object -Property $Property 
